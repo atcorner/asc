@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# This Source Code Form is subject to the terms of the Mozilla Public License,
+# v. 2.0. If a copy of the MPL was not distributed with this file, You can
+# obtain one at http://mozilla.org/MPL/2.0/.
+#
+# Copyright 2016, Ante Vojvodic, <ante@atcorner.hr>
+# All rights reserved.
+
+CONFIG="/opt/asc/config.json"
+PORT=$(awk '/http_port/ { gsub(",",""); print $2 }' ${CONFIG})
+URL="http://localhost:${PORT}/Collect/All"
+
+STATUS=$(curl -s -w '%{http_code}' -o /dev/null "${URL}" 2>/dev/null)
+
+if [ "x${STATUS}" == "x200" ]
+then
+    printf "OK\n"
+    exit 0
+else
+    printf "FAIL\n"
+    exit 1
+fi

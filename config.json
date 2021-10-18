@@ -1,0 +1,13 @@
+{
+    "http_port": 3498,
+    "collect_interval": 10,
+    "buffer_size": 4,
+    "disks": [
+        {
+            "mount_point": "/"
+        },
+        {
+            "mount_point": "/home"
+        }
+    ]
+}

@@ -1,0 +1,14 @@
+[Unit]
+Description=asc Service
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/opt/asc
+ExecStart=/opt/asc/asc
+Restart=on-failure
+
+
+[Install]
+WantedBy=multi-user.target
